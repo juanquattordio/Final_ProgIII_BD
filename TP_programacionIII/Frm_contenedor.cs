@@ -89,5 +89,23 @@ namespace TP_programacionIII
                 frm.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "Frm_proveedores").SingleOrDefault();
+            if (frm != null)
+            {
+                frm.Select();
+                frm.Show();
+                frm.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                frm = new Frm_proveedores();
+                frm.MdiParent = this;
+                frm.Show();
+                frm.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

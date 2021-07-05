@@ -45,6 +45,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="Marca_m.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor_m.cs" />
     <Compile Include="Sucursal_m.cs" />
     <Compile Include="Usuario_m.cs" />
   </ItemGroup>
