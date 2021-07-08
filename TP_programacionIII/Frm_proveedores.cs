@@ -25,23 +25,19 @@ namespace TP_programacionIII
         {
             int id = Int32.Parse(txt_id_prov.Text.Trim());
             string nombre = txt_nombre_prov.Text.Trim();
-            string direccion = txt_direccion_prov.Text.Trim();
-            string telefono = txt_tel_prov.Text.Trim();
             string tipo_prov = cb_tipo_prov.Text.Trim();
             string cuit= txt_cuit_prov.Text.Trim();
             string ibb = txt_ibb_prov.Text.Trim();
             string dni = txt_dni_prov.Text.Trim();
 
 
-            Proveedor proveedor= new Proveedor(id, nombre, direccion, telefono,tipo_prov,cuit,ibb,dni);
+            Proveedor proveedor= new Proveedor(id, nombre, tipo_prov,cuit,ibb,dni);
             bool estado = proveedor.Guardar();
 
             if (estado)
             {
                 Funciones.MOK(this, proveedor.Mensaje);
                 txt_nombre_prov.Text = "";
-                txt_direccion_prov.Text = "";
-                txt_tel_prov.Text = "";
                 cb_tipo_prov.Text = "";
                 txt_cuit_prov.Text = "";
                 txt_ibb_prov.Text = "";
@@ -54,8 +50,6 @@ namespace TP_programacionIII
             {
                 Funciones.MError(this, proveedor.Mensaje);
                 txt_nombre_prov.Text = "";
-                txt_direccion_prov.Text = "";
-                txt_tel_prov.Text = "";
                 cb_tipo_prov.Text = "";
                 txt_cuit_prov.Text = "";
                 txt_ibb_prov.Text = "";
@@ -68,8 +62,6 @@ namespace TP_programacionIII
         {
             txt_id_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["id_proveedor"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
             txt_nombre_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["nombre"].Value);
-            txt_direccion_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["direccion_prov"].Value);
-            txt_tel_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["telefono"].Value);
             cb_tipo_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["tipo_prov"].Value);
             txt_cuit_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["cuit"].Value);
             txt_ibb_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["IBB"].Value);
@@ -83,22 +75,18 @@ namespace TP_programacionIII
             {
                 int id = Convert.ToInt32(this.dgv_proveedores.CurrentRow.Cells["id_proveedor"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
                 string nombre = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["nombre"].Value);
-                string direccion = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["direccion_prov"].Value);
-                string telefono = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["telefono"].Value);
                 string tipo_prov = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["tipo_prov"].Value);
                 string cuit = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["cuit"].Value);
                 string ibb= Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["IBB"].Value);
                 string dni = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["DNI"].Value);
 
 
-                Proveedor proveedor = new Proveedor(id, nombre, direccion, telefono, tipo_prov, cuit, ibb, dni);
+                Proveedor proveedor = new Proveedor(id, nombre, tipo_prov, cuit, ibb, dni);
                 bool estado = proveedor.Eliminar();
                 if (estado)
                 {
                     Funciones.MOK(this, proveedor.Mensaje);
                     txt_nombre_prov.Text = "";
-                    txt_direccion_prov.Text = "";
-                    txt_tel_prov.Text = "";
                     cb_tipo_prov.Text = "";
                     txt_cuit_prov.Text = "";
                     txt_ibb_prov.Text = "";
@@ -110,14 +98,12 @@ namespace TP_programacionIII
                 else
                 {
                     Funciones.MError(this, proveedor.Mensaje);
-                    txt_nombre_prov.Text = "";
-                    txt_direccion_prov.Text = "";
-                    txt_tel_prov.Text = "";
-                    cb_tipo_prov.Text = "";
-                    txt_cuit_prov.Text = "";
-                    txt_ibb_prov.Text = "";
-                    txt_dni_prov.Text = "";
-                    txt_id_prov.Text = "0";
+                    //txt_nombre_prov.Text = "";
+                    //cb_tipo_prov.Text = "";
+                    //txt_cuit_prov.Text = "";
+                    //txt_ibb_prov.Text = "";
+                    //txt_dni_prov.Text = "";
+                    //txt_id_prov.Text = "0";
                 }
             }
             catch (Exception)
@@ -134,8 +120,6 @@ namespace TP_programacionIII
         private void bto_limpiar_Click(object sender, EventArgs e)
         {
             txt_nombre_prov.Text = "";
-            txt_direccion_prov.Text = "";
-            txt_tel_prov.Text = "";
             cb_tipo_prov.Text = "";
             txt_cuit_prov.Text = "";
             txt_ibb_prov.Text = "";
@@ -174,10 +158,45 @@ namespace TP_programacionIII
                 txt_ibb_prov.Enabled = true;
             }
         }
-        /*private void cb_tipo_prov_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void bto_agregar_telefono_Click(object sender, EventArgs e)
         {
-           
-        }*/
+            if (txt_id_prov.Text == "0")
+            {
+                Funciones.MError(this, "Primero guardar proveedor y seleccionar de la grilla el proveedor a cargar telefono.");
+            }
+            else
+            {
+                int id_prov = Int32.Parse(txt_id_prov.Text);
+                string proveedor = txt_nombre_prov.Text.Trim();
+
+                Frm_telefonos frm = new Frm_telefonos(id_prov, proveedor);
+                frm.Show();
+                //this.Hide(); oculta frm_Proveedores
+            }
+
+        }
+
+        private void bto_agregar_direccion_Click(object sender, EventArgs e)
+        {
+            if (txt_id_prov.Text == "0")
+            {
+                Funciones.MError(this, "Primero guardar proveedor y seleccionar de la grilla el proveedor a cargar dirección.");
+            }
+            else
+            {
+                int id_prov = Int32.Parse(txt_id_prov.Text);
+                string proveedor = txt_nombre_prov.Text.Trim();
+
+                Frm_direcciones frm = new Frm_direcciones(id_prov, proveedor);
+                frm.Show();
+                //this.Hide(); oculta frm_Proveedores
+            }
+        }
+        /*private void cb_tipo_prov_SelectedIndexChanged(object sender, EventArgs e)
+{
+
+}*/
 
     }
 }

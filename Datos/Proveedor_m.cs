@@ -31,7 +31,7 @@ namespace Datos
         public static DataTable TraerActivos()
         {
             DataTable dtListaAll = new DataTable("Proveedor"); // creo una Tabla de datos
-            string sql = "SELECT id_proveedor, nombre, direccion, telefono, tipo_prov, cuit, ibb, DNI, baja FROM proveedores where baja='1'"; // le digo que datos buscar y los guardo ahí
+            string sql = "SELECT id_proveedor, nombre, tipo_prov, cuit, ibb, DNI, baja FROM proveedores where baja='1'"; // le digo que datos buscar y los guardo ahí
             try
             {
                 Conexion Cx = new Conexion();
@@ -53,7 +53,7 @@ namespace Datos
         public static DataTable TraerTodos()
         {
             DataTable dtListaAll = new DataTable("Proveedor"); // creo una Tabla de datos
-            string sql = "SELECT id_proveedor, nombre, direccion, telefono, tipo_prov, cuit, ibb, DNI, baja FROM proveedores"; // le digo que datos buscar y los guardo ahí
+            string sql = "SELECT id_proveedor, nombre, tipo_prov, cuit, ibb, DNI, baja FROM proveedores"; // le digo que datos buscar y los guardo ahí
             try
             {
                 Conexion Cx = new Conexion();
@@ -72,11 +72,11 @@ namespace Datos
             }
             return dtListaAll;
         }
-        public static int Guardar(int id_prov, string nombre,string direccion,string telefono,string tipo_prov,string cuit,string ibb,string dni, bool baja=true)
+        public static int Guardar(int id_prov, string nombre,string tipo_prov,string cuit,string ibb,string dni, bool baja=true)
         {
             if (id_prov == 0)
             {
-                string sql = "INSERT INTO proveedores (nombre, direccion, telefono, tipo_prov, cuit, ibb, DNI, baja) VALUES (@nombre, @direccion, @telefono, @tipo_prov, @cuit, @ibb, @DNI, @baja)"; //RETURNING id_prov
+                string sql = "INSERT INTO proveedores (nombre, tipo_prov, cuit, ibb, DNI, baja) VALUES (@nombre, @tipo_prov, @cuit, @ibb, @DNI, @baja)"; //RETURNING id_prov
                 try
                 {
 
@@ -86,21 +86,17 @@ namespace Datos
 
                     // Cx.sqlCmd.Parameters.AddWithValue("@nombre", pnombre);
                     Cx.sqlCmd.Parameters.Add("@nombre", DbType.String);
-                    Cx.sqlCmd.Parameters.Add("@direccion", DbType.String);
-                    Cx.sqlCmd.Parameters.Add("@telefono", DbType.String);
                     Cx.sqlCmd.Parameters.Add("@tipo_prov", DbType.String);
                     Cx.sqlCmd.Parameters.Add("@cuit", DbType.String);
                     Cx.sqlCmd.Parameters.Add("@ibb", DbType.String);
                     Cx.sqlCmd.Parameters.Add("@DNI", DbType.String);
                     Cx.sqlCmd.Parameters.Add("@baja", DbType.Boolean);
                     Cx.sqlCmd.Parameters[0].Value = nombre;
-                    Cx.sqlCmd.Parameters[1].Value = direccion;
-                    Cx.sqlCmd.Parameters[2].Value = telefono;
-                    Cx.sqlCmd.Parameters[3].Value = tipo_prov;
-                    Cx.sqlCmd.Parameters[4].Value = cuit;
-                    Cx.sqlCmd.Parameters[5].Value = ibb;
-                    Cx.sqlCmd.Parameters[6].Value = dni;
-                    Cx.sqlCmd.Parameters[7].Value = baja;
+                    Cx.sqlCmd.Parameters[1].Value = tipo_prov;
+                    Cx.sqlCmd.Parameters[2].Value = cuit;
+                    Cx.sqlCmd.Parameters[3].Value = ibb;
+                    Cx.sqlCmd.Parameters[4].Value = dni;
+                    Cx.sqlCmd.Parameters[5].Value = baja;
 
                     Cx.Abrir();
                     int nro = Cx.sqlCmd.ExecuteNonQuery();
@@ -118,15 +114,15 @@ namespace Datos
             else
             {
 
-                return Modificar(id_prov, nombre, direccion, telefono, tipo_prov, cuit, ibb, dni, baja);
+                return Modificar(id_prov, nombre, tipo_prov, cuit, ibb, dni, baja);
 
 
             }
         }
 
-        private static int Modificar(int id_prov, string nombre, string direccion, string telefono, string tipo_prov, string cuit, string ibb, string dni, bool baja)
+        private static int Modificar(int id_prov, string nombre, string tipo_prov, string cuit, string ibb, string dni, bool baja)
         {
-            string sql = "Update proveedores SET nombre = @nombre, direccion=@direccion, telefono=@telefono, tipo_prov=@tipo_prov, cuit=@cuit, ibb=@ibb, DNI=@DNI, baja=@baja Where id_proveedor = @id"; //RETURNING id_marca
+            string sql = "Update proveedores SET nombre = @nombre, tipo_prov=@tipo_prov, cuit=@cuit, ibb=@ibb, DNI=@DNI, baja=@baja Where id_proveedor = @id"; //RETURNING id_marca
             try
             {
 
@@ -135,8 +131,6 @@ namespace Datos
                 Cx.SetSql(sql);
 
                 Cx.sqlCmd.Parameters.Add("@nombre", DbType.String);
-                Cx.sqlCmd.Parameters.Add("@direccion", DbType.String);
-                Cx.sqlCmd.Parameters.Add("@telefono", DbType.String);
                 Cx.sqlCmd.Parameters.Add("@tipo_prov", DbType.String);
                 Cx.sqlCmd.Parameters.Add("@cuit", DbType.String);
                 Cx.sqlCmd.Parameters.Add("@ibb", DbType.String);
@@ -145,14 +139,12 @@ namespace Datos
                 Cx.sqlCmd.Parameters.Add("@id", DbType.Int32);
 
                 Cx.sqlCmd.Parameters[0].Value = nombre;
-                Cx.sqlCmd.Parameters[1].Value = direccion;
-                Cx.sqlCmd.Parameters[2].Value = telefono;
-                Cx.sqlCmd.Parameters[3].Value = tipo_prov;
-                Cx.sqlCmd.Parameters[4].Value = cuit;
-                Cx.sqlCmd.Parameters[5].Value = ibb;
-                Cx.sqlCmd.Parameters[6].Value = dni;
-                Cx.sqlCmd.Parameters[7].Value = baja;
-                Cx.sqlCmd.Parameters[8].Value = id_prov;
+                Cx.sqlCmd.Parameters[1].Value = tipo_prov;
+                Cx.sqlCmd.Parameters[2].Value = cuit;
+                Cx.sqlCmd.Parameters[3].Value = ibb;
+                Cx.sqlCmd.Parameters[4].Value = dni;
+                Cx.sqlCmd.Parameters[5].Value = baja;
+                Cx.sqlCmd.Parameters[6].Value = id_prov;
 
 
                 Cx.Abrir();

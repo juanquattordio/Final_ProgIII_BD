@@ -29,8 +29,8 @@ namespace TP_programacionIII
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chBox_Activos = new System.Windows.Forms.CheckBox();
             this.txt_direccion_prov = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,10 +53,10 @@ namespace TP_programacionIII
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_dni_prov = new System.Windows.Forms.TextBox();
+            this.bto_agregar_telefono = new System.Windows.Forms.Button();
+            this.bto_agregar_direccion = new System.Windows.Forms.Button();
             this.id_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccion_prov = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo_prov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IBB = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,11 +80,13 @@ namespace TP_programacionIII
             // 
             // txt_direccion_prov
             // 
-            this.txt_direccion_prov.Location = new System.Drawing.Point(144, 94);
+            this.txt_direccion_prov.Enabled = false;
+            this.txt_direccion_prov.Location = new System.Drawing.Point(730, 180);
             this.txt_direccion_prov.Name = "txt_direccion_prov";
-            this.txt_direccion_prov.Size = new System.Drawing.Size(181, 22);
+            this.txt_direccion_prov.Size = new System.Drawing.Size(78, 22);
             this.txt_direccion_prov.TabIndex = 2;
             this.txt_direccion_prov.Text = "Agregar direccion...";
+            this.txt_direccion_prov.Visible = false;
             // 
             // label3
             // 
@@ -114,8 +116,6 @@ namespace TP_programacionIII
             this.dgv_proveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_proveedor,
             this.nombre,
-            this.direccion_prov,
-            this.telefono,
             this.tipo_prov,
             this.cuit,
             this.IBB,
@@ -126,7 +126,7 @@ namespace TP_programacionIII
             this.dgv_proveedores.ReadOnly = true;
             this.dgv_proveedores.RowHeadersWidth = 51;
             this.dgv_proveedores.RowTemplate.Height = 24;
-            this.dgv_proveedores.Size = new System.Drawing.Size(894, 247);
+            this.dgv_proveedores.Size = new System.Drawing.Size(765, 247);
             this.dgv_proveedores.TabIndex = 23;
             this.dgv_proveedores.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.modificar);
             // 
@@ -142,7 +142,7 @@ namespace TP_programacionIII
             // 
             // bto_limpiar
             // 
-            this.bto_limpiar.Location = new System.Drawing.Point(763, 83);
+            this.bto_limpiar.Location = new System.Drawing.Point(703, 68);
             this.bto_limpiar.Name = "bto_limpiar";
             this.bto_limpiar.Size = new System.Drawing.Size(105, 44);
             this.bto_limpiar.TabIndex = 21;
@@ -152,7 +152,7 @@ namespace TP_programacionIII
             // 
             // bto_aceptar
             // 
-            this.bto_aceptar.Location = new System.Drawing.Point(763, 33);
+            this.bto_aceptar.Location = new System.Drawing.Point(703, 18);
             this.bto_aceptar.Name = "bto_aceptar";
             this.bto_aceptar.Size = new System.Drawing.Size(105, 44);
             this.bto_aceptar.TabIndex = 20;
@@ -205,10 +205,12 @@ namespace TP_programacionIII
             // 
             // txt_tel_prov
             // 
-            this.txt_tel_prov.Location = new System.Drawing.Point(144, 129);
+            this.txt_tel_prov.Enabled = false;
+            this.txt_tel_prov.Location = new System.Drawing.Point(730, 152);
             this.txt_tel_prov.Name = "txt_tel_prov";
-            this.txt_tel_prov.Size = new System.Drawing.Size(181, 22);
+            this.txt_tel_prov.Size = new System.Drawing.Size(78, 22);
             this.txt_tel_prov.TabIndex = 3;
+            this.txt_tel_prov.Visible = false;
             // 
             // label5
             // 
@@ -282,11 +284,31 @@ namespace TP_programacionIII
             this.txt_dni_prov.Size = new System.Drawing.Size(181, 22);
             this.txt_dni_prov.TabIndex = 7;
             // 
+            // bto_agregar_telefono
+            // 
+            this.bto_agregar_telefono.Location = new System.Drawing.Point(144, 135);
+            this.bto_agregar_telefono.Name = "bto_agregar_telefono";
+            this.bto_agregar_telefono.Size = new System.Drawing.Size(105, 44);
+            this.bto_agregar_telefono.TabIndex = 21;
+            this.bto_agregar_telefono.Text = "Agregar telefono";
+            this.bto_agregar_telefono.UseVisualStyleBackColor = true;
+            this.bto_agregar_telefono.Click += new System.EventHandler(this.bto_agregar_telefono_Click);
+            // 
+            // bto_agregar_direccion
+            // 
+            this.bto_agregar_direccion.Location = new System.Drawing.Point(144, 85);
+            this.bto_agregar_direccion.Name = "bto_agregar_direccion";
+            this.bto_agregar_direccion.Size = new System.Drawing.Size(105, 44);
+            this.bto_agregar_direccion.TabIndex = 21;
+            this.bto_agregar_direccion.Text = "Agregar direccion";
+            this.bto_agregar_direccion.UseVisualStyleBackColor = true;
+            this.bto_agregar_direccion.Click += new System.EventHandler(this.bto_agregar_direccion_Click);
+            // 
             // id_proveedor
             // 
             this.id_proveedor.DataPropertyName = "id_proveedor";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id_proveedor.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id_proveedor.DefaultCellStyle = dataGridViewCellStyle3;
             this.id_proveedor.HeaderText = "ID Prov";
             this.id_proveedor.MinimumWidth = 6;
             this.id_proveedor.Name = "id_proveedor";
@@ -296,31 +318,13 @@ namespace TP_programacionIII
             // nombre
             // 
             this.nombre.DataPropertyName = "nombre";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.nombre.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.nombre.DefaultCellStyle = dataGridViewCellStyle4;
             this.nombre.HeaderText = "Nombre";
             this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
             this.nombre.Width = 150;
-            // 
-            // direccion_prov
-            // 
-            this.direccion_prov.DataPropertyName = "direccion";
-            this.direccion_prov.HeaderText = "Direccion";
-            this.direccion_prov.MinimumWidth = 6;
-            this.direccion_prov.Name = "direccion_prov";
-            this.direccion_prov.ReadOnly = true;
-            this.direccion_prov.Width = 250;
-            // 
-            // telefono
-            // 
-            this.telefono.DataPropertyName = "telefono";
-            this.telefono.HeaderText = "Telefono";
-            this.telefono.MinimumWidth = 6;
-            this.telefono.Name = "telefono";
-            this.telefono.ReadOnly = true;
-            this.telefono.Width = 80;
             // 
             // tipo_prov
             // 
@@ -388,6 +392,8 @@ namespace TP_programacionIII
             this.Controls.Add(this.bto_eliminar);
             this.Controls.Add(this.dgv_proveedores);
             this.Controls.Add(this.bto_Salir);
+            this.Controls.Add(this.bto_agregar_direccion);
+            this.Controls.Add(this.bto_agregar_telefono);
             this.Controls.Add(this.bto_limpiar);
             this.Controls.Add(this.bto_aceptar);
             this.Controls.Add(this.txt_nombre_prov);
@@ -426,10 +432,10 @@ namespace TP_programacionIII
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_dni_prov;
+        private System.Windows.Forms.Button bto_agregar_telefono;
+        private System.Windows.Forms.Button bto_agregar_direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn direccion_prov;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_prov;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn IBB;

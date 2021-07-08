@@ -12,30 +12,17 @@ namespace Negocios
     {
         private int id_prov;
         private string nombre;
-        private string direccion;
-        private string telefono;
         private string tipo_prov;
         private string cuit;
         private string ibb;
         private string dni;
         private bool baja;
         private string mensaje;
-        private int id;
-        private string descripcion;
 
-        public Proveedor(int id, string nombre, string descripcion)
-        {
-            this.id = id;
-            this.nombre = nombre;
-            this.descripcion = descripcion;
-        }
-
-        public Proveedor(int id, string nombre, string direccion, string telefono, string tipo_prov, string cuit, string ibb, string dni, bool baja = true)
+        public Proveedor(int id, string nombre, string tipo_prov, string cuit, string ibb, string dni, bool baja = true)
         {
             this.id_prov = id;
             this.nombre = nombre;
-            this.direccion = direccion;
-            this.telefono = telefono;
             this.tipo_prov = tipo_prov;
             this.cuit = cuit;
             this.ibb = ibb;
@@ -57,7 +44,7 @@ namespace Negocios
 
             if (Proveedor_m.ValidarDatos(this.cuit, this.dni))
             {
-                resultado = Proveedor_m.Guardar(id_prov, nombre, direccion, telefono, tipo_prov, cuit, ibb, dni, true);
+                resultado = Proveedor_m.Guardar(id_prov, nombre, tipo_prov, cuit, ibb, dni, true);
             }
 
 
@@ -76,7 +63,7 @@ namespace Negocios
         public bool Eliminar()
         {
             int resultado = 0;
-            resultado = Proveedor_m.Guardar(id_prov, nombre, direccion, telefono, tipo_prov, cuit, ibb, dni, false);
+            resultado = Proveedor_m.Guardar(id_prov, nombre, tipo_prov, cuit, ibb, dni, false);
 
             if (resultado > 0)
             {
