@@ -52,7 +52,9 @@ namespace TP_programacionIII
         {
             try
             {
-                int id = Convert.ToInt32(this.dgv_sucursales.CurrentRow.Cells["id"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
+                if (txt_id_suc.Text != "0")
+                {
+                    int id = Convert.ToInt32(this.dgv_sucursales.CurrentRow.Cells["id"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
                 string nombre = Convert.ToString(this.dgv_sucursales.CurrentRow.Cells["nombre"].Value);
 
                 Sucursal suc = new Sucursal(id, nombre);
@@ -71,6 +73,8 @@ namespace TP_programacionIII
                     txt_nombre_suc.Text = "";
                     txt_id_suc.Text = "0";
                 }
+                }
+                else throw new Exception();
             }
             catch (Exception)
             {

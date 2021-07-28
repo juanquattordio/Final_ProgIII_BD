@@ -12,8 +12,6 @@ using Negocios;
 
 namespace TP_programacionIII
 {
-  
-
     public partial class Frm_direcciones : Form
     {
         private int id_prov;
@@ -40,7 +38,7 @@ namespace TP_programacionIII
                 string calle = txt_calle.Text.Trim();
                 int numero = Int32.Parse(txt_numero.Text.Trim());
                 int codigo_postal = Int32.Parse(txt_codigo_postal.Text.Trim());
-                
+
                 Direccion dir = new Direccion(id_dir, id_prov, ciudad, provincia, pais, calle, numero, codigo_postal);
                 bool estado = dir.Guardar();
 
@@ -62,14 +60,6 @@ namespace TP_programacionIII
                 else
                 {
                     Funciones.MError(this, dir.Mensaje);
-                    //txt_nombre_prov.Text = "";
-                    //txt_direccion_prov.Text = "";
-                    //txt_tel_prov.Text = "";
-                    //cb_tipo_prov.Text = "";
-                    //txt_cuit_prov.Text = "";
-                    //txt_ibb_prov.Text = "";
-                    //txt_dni_prov.Text = "";
-                    //txt_id_prov.Text = "0";
                 }
             }
         }
@@ -77,42 +67,40 @@ namespace TP_programacionIII
         {
             try
             {
-                int id_dir = Int32.Parse(txt_id_dir.Text.Trim()); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
-                int id_prov = Int32.Parse(txt_id_prov.Text.Trim());
-                string ciudad = txt_ciudad.Text.Trim();
-                string provincia = txt_provincia.Text.Trim();
-                string pais = txt_pais.Text.Trim();
-                string calle = txt_calle.Text.Trim();
-                int numero = Int32.Parse(txt_numero.Text.Trim());
-                int codigo_postal = Int32.Parse(txt_codigo_postal.Text.Trim());
-
-
-
-                Direccion dir = new Direccion(id_dir, id_prov, ciudad, provincia, pais, calle, numero, codigo_postal);
-                bool estado = dir.Eliminar();
-                if (estado)
+                if (txt_id_dir.Text != "0")
                 {
-                    Funciones.MOK(this, dir.Mensaje);
-                    txt_id_dir.Text = "0";
-                    txt_ciudad.Text = "";
-                    txt_provincia.Text = "";
-                    txt_pais.Text = "";
-                    txt_calle.Text = "";
-                    txt_numero.Text = "";
-                    txt_codigo_postal.Text = "";
-                    dgv_direcciones.DataSource = Direccion.TraerActivos(id_prov);  // le asigno los datos traidos en la tabla
+                    int id_dir = Int32.Parse(txt_id_dir.Text.Trim()); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
+                    int id_prov = Int32.Parse(txt_id_prov.Text.Trim());
+                    string ciudad = txt_ciudad.Text.Trim();
+                    string provincia = txt_provincia.Text.Trim();
+                    string pais = txt_pais.Text.Trim();
+                    string calle = txt_calle.Text.Trim();
+                    int numero = Int32.Parse(txt_numero.Text.Trim());
+                    int codigo_postal = Int32.Parse(txt_codigo_postal.Text.Trim());
 
+
+
+                    Direccion dir = new Direccion(id_dir, id_prov, ciudad, provincia, pais, calle, numero, codigo_postal);
+                    bool estado = dir.Eliminar();
+                    if (estado)
+                    {
+                        Funciones.MOK(this, dir.Mensaje);
+                        txt_id_dir.Text = "0";
+                        txt_ciudad.Text = "";
+                        txt_provincia.Text = "";
+                        txt_pais.Text = "";
+                        txt_calle.Text = "";
+                        txt_numero.Text = "";
+                        txt_codigo_postal.Text = "";
+                        dgv_direcciones.DataSource = Direccion.TraerActivos(id_prov);  // le asigno los datos traidos en la tabla
+
+                    }
+                    else
+                    {
+                        Funciones.MError(this, dir.Mensaje);
+                    }
                 }
-                else
-                {
-                    Funciones.MError(this, dir.Mensaje);
-                    //txt_nombre_prov.Text = "";
-                    //cb_tipo_prov.Text = "";
-                    //txt_cuit_prov.Text = "";
-                    //txt_ibb_prov.Text = "";
-                    //txt_dni_prov.Text = "";
-                    //txt_id_prov.Text = "0";
-                }
+                else throw new Exception();
             }
             catch (Exception)
             {
@@ -146,6 +134,6 @@ namespace TP_programacionIII
             txt_codigo_postal.Text = "";
         }
     }
-    
+
 
 }

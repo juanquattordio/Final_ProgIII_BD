@@ -20,18 +20,18 @@ namespace TP_programacionIII
             dgv_proveedores.DataSource = Proveedor.TraerActivos();  // le asigno los datos traidos en la tabla
         }
 
-        
+
         private void bto_aceptar_Click(object sender, EventArgs e)
         {
             int id = Int32.Parse(txt_id_prov.Text.Trim());
             string nombre = txt_nombre_prov.Text.Trim();
             string tipo_prov = cb_tipo_prov.Text.Trim();
-            string cuit= txt_cuit_prov.Text.Trim();
+            string cuit = txt_cuit_prov.Text.Trim();
             string ibb = txt_ibb_prov.Text.Trim();
             string dni = txt_dni_prov.Text.Trim();
 
 
-            Proveedor proveedor= new Proveedor(id, nombre, tipo_prov,cuit,ibb,dni);
+            Proveedor proveedor = new Proveedor(id, nombre, tipo_prov, cuit, ibb, dni);
             bool estado = proveedor.Guardar();
 
             if (estado)
@@ -73,43 +73,41 @@ namespace TP_programacionIII
         {
             try
             {
-                int id = Convert.ToInt32(this.dgv_proveedores.CurrentRow.Cells["id_proveedor"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
-                string nombre = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["nombre"].Value);
-                string tipo_prov = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["tipo_prov"].Value);
-                string cuit = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["cuit"].Value);
-                string ibb= Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["IBB"].Value);
-                string dni = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["DNI"].Value);
-
-
-                Proveedor proveedor = new Proveedor(id, nombre, tipo_prov, cuit, ibb, dni);
-                bool estado = proveedor.Eliminar();
-                if (estado)
+                if (txt_id_prov.Text != "0")
                 {
-                    Funciones.MOK(this, proveedor.Mensaje);
-                    txt_nombre_prov.Text = "";
-                    cb_tipo_prov.Text = "";
-                    txt_cuit_prov.Text = "";
-                    txt_ibb_prov.Text = "";
-                    txt_dni_prov.Text = "";
-                    txt_id_prov.Text = "0";
-                    dgv_proveedores.DataSource = Proveedor.TraerActivos();  // le asigno los datos traidos en la tabla
+                    int id = Convert.ToInt32(this.dgv_proveedores.CurrentRow.Cells["id_proveedor"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
+                    string nombre = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["nombre"].Value);
+                    string tipo_prov = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["tipo_prov"].Value);
+                    string cuit = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["cuit"].Value);
+                    string ibb = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["IBB"].Value);
+                    string dni = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["DNI"].Value);
 
+                    Proveedor proveedor = new Proveedor(id, nombre, tipo_prov, cuit, ibb, dni);
+                    bool estado = proveedor.Eliminar();
+                    if (estado)
+                    {
+                        Funciones.MOK(this, proveedor.Mensaje);
+                        txt_nombre_prov.Text = "";
+                        cb_tipo_prov.Text = "";
+                        txt_cuit_prov.Text = "";
+                        txt_ibb_prov.Text = "";
+                        txt_dni_prov.Text = "";
+                        txt_id_prov.Text = "0";
+                        dgv_proveedores.DataSource = Proveedor.TraerActivos();  // le asigno los datos traidos en la tabla
+
+                    }
+                    else
+                    {
+                        Funciones.MError(this, proveedor.Mensaje);
+                    }
                 }
-                else
-                {
-                    Funciones.MError(this, proveedor.Mensaje);
-                    //txt_nombre_prov.Text = "";
-                    //cb_tipo_prov.Text = "";
-                    //txt_cuit_prov.Text = "";
-                    //txt_ibb_prov.Text = "";
-                    //txt_dni_prov.Text = "";
-                    //txt_id_prov.Text = "0";
-                }
+                else throw new Exception();
             }
             catch (Exception)
             {
                 Funciones.MError(this, "No seleccionó registro a eliminar");
             }
+
         }
 
         private void bto_Salir_Click(object sender, EventArgs e)
@@ -133,7 +131,8 @@ namespace TP_programacionIII
             {
                 dgv_proveedores.DataSource = Proveedor.TraerActivos();  // le asigno los datos traidos en la tabla
 
-            } else
+            }
+            else
             {
                 dgv_proveedores.DataSource = Proveedor.TraerTodos();  // le asigno los datos traidos en la tabla
             }
@@ -193,10 +192,5 @@ namespace TP_programacionIII
                 //this.Hide(); oculta frm_Proveedores
             }
         }
-        /*private void cb_tipo_prov_SelectedIndexChanged(object sender, EventArgs e)
-{
-
-}*/
-
     }
 }

@@ -16,14 +16,14 @@ namespace TP_programacionIII
         private int id_prov;
         private string proveedor;
 
-        public Frm_telefonos(int id_prov,string proveedor)
+        public Frm_telefonos(int id_prov, string proveedor)
         {
             InitializeComponent();
             this.id_prov = id_prov;
             this.proveedor = proveedor;
-            this.Text = "Agregando telefono a proveedor: "+ proveedor;
+            this.Text = "Agregando telefono a proveedor: " + proveedor;
             txt_id_prov.Text = id_prov.ToString();
-            txt_nombre_prov.Text= proveedor;
+            txt_nombre_prov.Text = proveedor;
             dgv_telefonos.DataSource = Telefono.TraerActivos(id_prov);
         }
 
@@ -66,33 +66,31 @@ namespace TP_programacionIII
         {
             try
             {
-                int id_tel = Int32.Parse(txt_id_tel.Text.Trim());
-                int id_prov = Int32.Parse(txt_id_prov.Text.Trim());
-                int codigo_area = Int32.Parse(txt_codigo_area.Text.Trim());
-                int telefono = Int32.Parse(txt_telefono.Text.Trim());
-
-                Telefono tel = new Telefono(id_tel, id_prov, codigo_area, telefono);
-                bool estado = tel.Eliminar();
-                if (estado)
+                if (txt_id_tel.Text != "0")
                 {
-                    Funciones.MOK(this, tel.Mensaje);
-                    txt_id_tel.Text = "0";
-                    txt_codigo_area.Text = "";
-                    txt_telefono.Text = "";
+                    int id_tel = Int32.Parse(txt_id_tel.Text.Trim());
+                    int id_prov = Int32.Parse(txt_id_prov.Text.Trim());
+                    int codigo_area = Int32.Parse(txt_codigo_area.Text.Trim());
+                    int telefono = Int32.Parse(txt_telefono.Text.Trim());
 
-                    dgv_telefonos.DataSource = Telefono.TraerActivos(id_prov);  // le asigno los datos traidos en la tabla
+                    Telefono tel = new Telefono(id_tel, id_prov, codigo_area, telefono);
+                    bool estado = tel.Eliminar();
+                    if (estado)
+                    {
+                        Funciones.MOK(this, tel.Mensaje);
+                        txt_id_tel.Text = "0";
+                        txt_codigo_area.Text = "";
+                        txt_telefono.Text = "";
 
+                        dgv_telefonos.DataSource = Telefono.TraerActivos(id_prov);  // le asigno los datos traidos en la tabla
+
+                    }
+                    else
+                    {
+                        Funciones.MError(this, tel.Mensaje);
+                    }
                 }
-                else
-                {
-                    Funciones.MError(this, tel.Mensaje);
-                    //txt_nombre_prov.Text = "";
-                    //cb_tipo_prov.Text = "";
-                    //txt_cuit_prov.Text = "";
-                    //txt_ibb_prov.Text = "";
-                    //txt_dni_prov.Text = "";
-                    //txt_id_prov.Text = "0";
-                }
+                else throw new Exception();
             }
             catch (Exception)
             {

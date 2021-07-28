@@ -107,5 +107,24 @@ namespace TP_programacionIII
                 frm.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "Frm_productos").SingleOrDefault();
+            if (frm != null)
+            {
+                frm.Select();
+                frm.Show();
+                frm.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                frm = new Frm_productos();
+                frm.MdiParent = this;
+                frm.Show();
+                frm.WindowState = FormWindowState.Normal;
+            }
+
+        }
     }
 }

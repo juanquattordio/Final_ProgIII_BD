@@ -26,7 +26,8 @@ namespace TP_programacionIII
             {
                 dgv_marcas.DataSource = Marca.TraerActivos();  // le asigno los datos traidos en la tabla
 
-            } else
+            }
+            else
             {
                 dgv_marcas.DataSource = Marca.TraerTodos();  // le asigno los datos traidos en la tabla
             }
@@ -37,7 +38,7 @@ namespace TP_programacionIII
             int id = Int32.Parse(txt_id_marca.Text.Trim());
             string nombre = txt_nombre_marca.Text.Trim();
             string descripcion = txt_desc_marca.Text.Trim();
-            
+
 
             Marca marca = new Marca(id, nombre, descripcion);
             bool estado = marca.Guardar();
@@ -70,28 +71,32 @@ namespace TP_programacionIII
         {
             try
             {
-                int id = Convert.ToInt32(this.dgv_marcas.CurrentRow.Cells["id_marca"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
-                string nombre = Convert.ToString(this.dgv_marcas.CurrentRow.Cells["nombre"].Value);
-                string descripcion = Convert.ToString(this.dgv_marcas.CurrentRow.Cells["descripcion_marca"].Value);
-
-                Marca marca = new Marca(id, nombre, descripcion);
-                bool estado = marca.Eliminar();
-                if (estado)
+                if (txt_id_marca.Text != "0")
                 {
-                    Funciones.MOK(this, marca.Mensaje);
-                    txt_nombre_marca.Text = "";
-                    txt_id_marca.Text = "0";
-                    txt_desc_marca.Text = "";
-                    dgv_marcas.DataSource = Marca.TraerActivos();  // le asigno los datos traidos en la tabla
+                    int id = Convert.ToInt32(this.dgv_marcas.CurrentRow.Cells["id_marca"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
+                    string nombre = Convert.ToString(this.dgv_marcas.CurrentRow.Cells["nombre"].Value);
+                    string descripcion = Convert.ToString(this.dgv_marcas.CurrentRow.Cells["descripcion_marca"].Value);
 
+                    Marca marca = new Marca(id, nombre, descripcion);
+                    bool estado = marca.Eliminar();
+                    if (estado)
+                    {
+                        Funciones.MOK(this, marca.Mensaje);
+                        txt_nombre_marca.Text = "";
+                        txt_id_marca.Text = "0";
+                        txt_desc_marca.Text = "";
+                        dgv_marcas.DataSource = Marca.TraerActivos();  // le asigno los datos traidos en la tabla
+
+                    }
+                    else
+                    {
+                        Funciones.MError(this, marca.Mensaje);
+                        txt_nombre_marca.Text = "";
+                        txt_id_marca.Text = "0";
+                        txt_desc_marca.Text = "";
+                    }
                 }
-                else
-                {
-                    Funciones.MError(this, marca.Mensaje);
-                    txt_nombre_marca.Text = "";
-                    txt_id_marca.Text = "0";
-                    txt_desc_marca.Text = "";
-                }
+                else throw new Exception();
             }
             catch (Exception)
             {
@@ -111,5 +116,5 @@ namespace TP_programacionIII
             txt_id_marca.Text = "0";
         }
     }
-    
+
 }

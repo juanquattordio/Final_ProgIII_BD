@@ -85,6 +85,18 @@
     <Compile Include="Frm_login.Designer.cs">
       <DependentUpon>Frm_login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_precios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_precios.Designer.cs">
+      <DependentUpon>Frm_precios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_productos.Designer.cs">
+      <DependentUpon>Frm_productos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_marcas.resx">
       <DependentUpon>Frm_marcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_precios.resx">
+      <DependentUpon>Frm_precios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_productos.resx">
+      <DependentUpon>Frm_productos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_proveedores.resx">
       <DependentUpon>Frm_proveedores.cs</DependentUpon>
