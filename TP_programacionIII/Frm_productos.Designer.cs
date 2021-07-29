@@ -100,16 +100,17 @@ namespace TP_programacionIII
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(92, 115);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
+            this.label3.Size = new System.Drawing.Size(79, 34);
             this.label3.TabIndex = 118;
-            this.label3.Text = "Proveedor";
+            this.label3.Text = "Precio\r\n-Proveedor";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // bto_eliminar
             // 
             this.bto_eliminar.Location = new System.Drawing.Point(264, 482);
             this.bto_eliminar.Name = "bto_eliminar";
             this.bto_eliminar.Size = new System.Drawing.Size(105, 44);
-            this.bto_eliminar.TabIndex = 114;
+            this.bto_eliminar.TabIndex = 5;
             this.bto_eliminar.Text = "Eliminar";
             this.bto_eliminar.UseVisualStyleBackColor = true;
             this.bto_eliminar.Click += new System.EventHandler(this.bto_eliminar_Click);
@@ -163,7 +164,7 @@ namespace TP_programacionIII
             this.Descripcion.MinimumWidth = 6;
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 65;
+            this.Descripcion.Width = 160;
             // 
             // Activo
             // 
@@ -179,7 +180,7 @@ namespace TP_programacionIII
             this.bto_Salir.Location = new System.Drawing.Point(674, 482);
             this.bto_Salir.Name = "bto_Salir";
             this.bto_Salir.Size = new System.Drawing.Size(105, 44);
-            this.bto_Salir.TabIndex = 115;
+            this.bto_Salir.TabIndex = 6;
             this.bto_Salir.Text = "Salir";
             this.bto_Salir.UseVisualStyleBackColor = true;
             this.bto_Salir.Click += new System.EventHandler(this.bto_Salir_Click);
@@ -189,8 +190,8 @@ namespace TP_programacionIII
             this.bto_agregar_prov.Location = new System.Drawing.Point(188, 105);
             this.bto_agregar_prov.Name = "bto_agregar_prov";
             this.bto_agregar_prov.Size = new System.Drawing.Size(105, 44);
-            this.bto_agregar_prov.TabIndex = 111;
-            this.bto_agregar_prov.Text = "Proveedores asociados";
+            this.bto_agregar_prov.TabIndex = 7;
+            this.bto_agregar_prov.Text = "Ver lista";
             this.bto_agregar_prov.UseVisualStyleBackColor = true;
             this.bto_agregar_prov.Click += new System.EventHandler(this.bto_agregar_prov_Click);
             // 
@@ -199,7 +200,7 @@ namespace TP_programacionIII
             this.bto_limpiar.Location = new System.Drawing.Point(747, 68);
             this.bto_limpiar.Name = "bto_limpiar";
             this.bto_limpiar.Size = new System.Drawing.Size(105, 44);
-            this.bto_limpiar.TabIndex = 109;
+            this.bto_limpiar.TabIndex = 4;
             this.bto_limpiar.Text = "Limpiar";
             this.bto_limpiar.UseVisualStyleBackColor = true;
             this.bto_limpiar.Click += new System.EventHandler(this.bto_limpiar_Click);
@@ -209,7 +210,7 @@ namespace TP_programacionIII
             this.bto_aceptar.Location = new System.Drawing.Point(747, 18);
             this.bto_aceptar.Name = "bto_aceptar";
             this.bto_aceptar.Size = new System.Drawing.Size(105, 44);
-            this.bto_aceptar.TabIndex = 108;
+            this.bto_aceptar.TabIndex = 3;
             this.bto_aceptar.Text = "Guardar";
             this.bto_aceptar.UseVisualStyleBackColor = true;
             this.bto_aceptar.Click += new System.EventHandler(this.bto_aceptar_Click);
@@ -219,7 +220,7 @@ namespace TP_programacionIII
             this.txt_nombre_prod.Location = new System.Drawing.Point(188, 57);
             this.txt_nombre_prod.Name = "txt_nombre_prod";
             this.txt_nombre_prod.Size = new System.Drawing.Size(181, 22);
-            this.txt_nombre_prod.TabIndex = 101;
+            this.txt_nombre_prod.TabIndex = 1;
             // 
             // txt_id_prod
             // 
@@ -255,7 +256,7 @@ namespace TP_programacionIII
             this.txt_descrip_prod.MinimumSize = new System.Drawing.Size(300, 100);
             this.txt_descrip_prod.Name = "txt_descrip_prod";
             this.txt_descrip_prod.Size = new System.Drawing.Size(300, 100);
-            this.txt_descrip_prod.TabIndex = 125;
+            this.txt_descrip_prod.TabIndex = 2;
             // 
             // Frm_productos
             // 

@@ -32,6 +32,11 @@ namespace TP_programacionIII
             this.chBox_Activos = new System.Windows.Forms.CheckBox();
             this.bto_eliminar = new System.Windows.Forms.Button();
             this.dgv_telefonos = new System.Windows.Forms.DataGridView();
+            this.id_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo_area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bto_Salir = new System.Windows.Forms.Button();
             this.bto_limpiar = new System.Windows.Forms.Button();
             this.bto_aceptar = new System.Windows.Forms.Button();
@@ -43,11 +48,6 @@ namespace TP_programacionIII
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_id_tel = new System.Windows.Forms.TextBox();
-            this.id_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo_area = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.id_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telefonos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@ namespace TP_programacionIII
             this.chBox_Activos.Location = new System.Drawing.Point(102, 138);
             this.chBox_Activos.Name = "chBox_Activos";
             this.chBox_Activos.Size = new System.Drawing.Size(107, 21);
-            this.chBox_Activos.TabIndex = 28;
+            this.chBox_Activos.TabIndex = 3;
             this.chBox_Activos.Text = "Sólo Activos";
             this.chBox_Activos.UseVisualStyleBackColor = true;
             // 
@@ -68,7 +68,7 @@ namespace TP_programacionIII
             this.bto_eliminar.Location = new System.Drawing.Point(173, 418);
             this.bto_eliminar.Name = "bto_eliminar";
             this.bto_eliminar.Size = new System.Drawing.Size(105, 44);
-            this.bto_eliminar.TabIndex = 30;
+            this.bto_eliminar.TabIndex = 6;
             this.bto_eliminar.Text = "Eliminar";
             this.bto_eliminar.UseVisualStyleBackColor = true;
             this.bto_eliminar.Click += new System.EventHandler(this.bto_eliminar_Click);
@@ -93,106 +93,6 @@ namespace TP_programacionIII
             this.dgv_telefonos.Size = new System.Drawing.Size(407, 247);
             this.dgv_telefonos.TabIndex = 29;
             this.dgv_telefonos.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.modificar);
-            // 
-            // bto_Salir
-            // 
-            this.bto_Salir.Location = new System.Drawing.Point(319, 418);
-            this.bto_Salir.Name = "bto_Salir";
-            this.bto_Salir.Size = new System.Drawing.Size(105, 44);
-            this.bto_Salir.TabIndex = 31;
-            this.bto_Salir.Text = "Salir";
-            this.bto_Salir.UseVisualStyleBackColor = true;
-            this.bto_Salir.Click += new System.EventHandler(this.bto_Salir_Click);
-            // 
-            // bto_limpiar
-            // 
-            this.bto_limpiar.Location = new System.Drawing.Point(400, 66);
-            this.bto_limpiar.Name = "bto_limpiar";
-            this.bto_limpiar.Size = new System.Drawing.Size(105, 44);
-            this.bto_limpiar.TabIndex = 27;
-            this.bto_limpiar.Text = "Limpiar";
-            this.bto_limpiar.UseVisualStyleBackColor = true;
-            this.bto_limpiar.Click += new System.EventHandler(this.bto_limpiar_Click);
-            // 
-            // bto_aceptar
-            // 
-            this.bto_aceptar.Location = new System.Drawing.Point(400, 16);
-            this.bto_aceptar.Name = "bto_aceptar";
-            this.bto_aceptar.Size = new System.Drawing.Size(105, 44);
-            this.bto_aceptar.TabIndex = 26;
-            this.bto_aceptar.Text = "Guardar";
-            this.bto_aceptar.UseVisualStyleBackColor = true;
-            this.bto_aceptar.Click += new System.EventHandler(this.bto_aceptar_Click);
-            // 
-            // txt_nombre_prov
-            // 
-            this.txt_nombre_prov.BackColor = System.Drawing.Color.LightGray;
-            this.txt_nombre_prov.Enabled = false;
-            this.txt_nombre_prov.Location = new System.Drawing.Point(149, 42);
-            this.txt_nombre_prov.Name = "txt_nombre_prov";
-            this.txt_nombre_prov.Size = new System.Drawing.Size(218, 22);
-            this.txt_nombre_prov.TabIndex = 101;
-            // 
-            // txt_id_prov
-            // 
-            this.txt_id_prov.BackColor = System.Drawing.Color.LightGray;
-            this.txt_id_prov.Enabled = false;
-            this.txt_id_prov.Location = new System.Drawing.Point(111, 42);
-            this.txt_id_prov.Name = "txt_id_prov";
-            this.txt_id_prov.Size = new System.Drawing.Size(32, 22);
-            this.txt_id_prov.TabIndex = 104;
-            this.txt_id_prov.Text = "0";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 17);
-            this.label2.TabIndex = 103;
-            this.label2.Text = "Nombre";
-            // 
-            // txt_codigo_area
-            // 
-            this.txt_codigo_area.Location = new System.Drawing.Point(248, 70);
-            this.txt_codigo_area.Name = "txt_codigo_area";
-            this.txt_codigo_area.Size = new System.Drawing.Size(119, 22);
-            this.txt_codigo_area.TabIndex = 101;
-            // 
-            // txt_telefono
-            // 
-            this.txt_telefono.Location = new System.Drawing.Point(194, 98);
-            this.txt_telefono.Name = "txt_telefono";
-            this.txt_telefono.Size = new System.Drawing.Size(173, 22);
-            this.txt_telefono.TabIndex = 101;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 17);
-            this.label1.TabIndex = 105;
-            this.label1.Text = "Codigo Area";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(149, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 17);
-            this.label3.TabIndex = 106;
-            this.label3.Text = "Tel";
-            // 
-            // txt_id_tel
-            // 
-            this.txt_id_tel.BackColor = System.Drawing.Color.LightGray;
-            this.txt_id_tel.Location = new System.Drawing.Point(63, 42);
-            this.txt_id_tel.Name = "txt_id_tel";
-            this.txt_id_tel.Size = new System.Drawing.Size(42, 22);
-            this.txt_id_tel.TabIndex = 107;
-            this.txt_id_tel.Text = "0";
-            this.txt_id_tel.Visible = false;
             // 
             // id_tel
             // 
@@ -240,6 +140,106 @@ namespace TP_programacionIII
             this.id_proveedor.ReadOnly = true;
             this.id_proveedor.Visible = false;
             this.id_proveedor.Width = 125;
+            // 
+            // bto_Salir
+            // 
+            this.bto_Salir.Location = new System.Drawing.Point(319, 418);
+            this.bto_Salir.Name = "bto_Salir";
+            this.bto_Salir.Size = new System.Drawing.Size(105, 44);
+            this.bto_Salir.TabIndex = 7;
+            this.bto_Salir.Text = "Salir";
+            this.bto_Salir.UseVisualStyleBackColor = true;
+            this.bto_Salir.Click += new System.EventHandler(this.bto_Salir_Click);
+            // 
+            // bto_limpiar
+            // 
+            this.bto_limpiar.Location = new System.Drawing.Point(400, 66);
+            this.bto_limpiar.Name = "bto_limpiar";
+            this.bto_limpiar.Size = new System.Drawing.Size(105, 44);
+            this.bto_limpiar.TabIndex = 5;
+            this.bto_limpiar.Text = "Limpiar";
+            this.bto_limpiar.UseVisualStyleBackColor = true;
+            this.bto_limpiar.Click += new System.EventHandler(this.bto_limpiar_Click);
+            // 
+            // bto_aceptar
+            // 
+            this.bto_aceptar.Location = new System.Drawing.Point(400, 16);
+            this.bto_aceptar.Name = "bto_aceptar";
+            this.bto_aceptar.Size = new System.Drawing.Size(105, 44);
+            this.bto_aceptar.TabIndex = 4;
+            this.bto_aceptar.Text = "Guardar";
+            this.bto_aceptar.UseVisualStyleBackColor = true;
+            this.bto_aceptar.Click += new System.EventHandler(this.bto_aceptar_Click);
+            // 
+            // txt_nombre_prov
+            // 
+            this.txt_nombre_prov.BackColor = System.Drawing.Color.LightGray;
+            this.txt_nombre_prov.Enabled = false;
+            this.txt_nombre_prov.Location = new System.Drawing.Point(149, 42);
+            this.txt_nombre_prov.Name = "txt_nombre_prov";
+            this.txt_nombre_prov.Size = new System.Drawing.Size(218, 22);
+            this.txt_nombre_prov.TabIndex = 101;
+            // 
+            // txt_id_prov
+            // 
+            this.txt_id_prov.BackColor = System.Drawing.Color.LightGray;
+            this.txt_id_prov.Enabled = false;
+            this.txt_id_prov.Location = new System.Drawing.Point(111, 42);
+            this.txt_id_prov.Name = "txt_id_prov";
+            this.txt_id_prov.Size = new System.Drawing.Size(32, 22);
+            this.txt_id_prov.TabIndex = 104;
+            this.txt_id_prov.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(149, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 17);
+            this.label2.TabIndex = 103;
+            this.label2.Text = "Nombre";
+            // 
+            // txt_codigo_area
+            // 
+            this.txt_codigo_area.Location = new System.Drawing.Point(248, 70);
+            this.txt_codigo_area.Name = "txt_codigo_area";
+            this.txt_codigo_area.Size = new System.Drawing.Size(119, 22);
+            this.txt_codigo_area.TabIndex = 1;
+            // 
+            // txt_telefono
+            // 
+            this.txt_telefono.Location = new System.Drawing.Point(194, 98);
+            this.txt_telefono.Name = "txt_telefono";
+            this.txt_telefono.Size = new System.Drawing.Size(173, 22);
+            this.txt_telefono.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(149, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 17);
+            this.label1.TabIndex = 105;
+            this.label1.Text = "Codigo Area";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(149, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 17);
+            this.label3.TabIndex = 106;
+            this.label3.Text = "Tel";
+            // 
+            // txt_id_tel
+            // 
+            this.txt_id_tel.BackColor = System.Drawing.Color.LightGray;
+            this.txt_id_tel.Location = new System.Drawing.Point(63, 42);
+            this.txt_id_tel.Name = "txt_id_tel";
+            this.txt_id_tel.Size = new System.Drawing.Size(42, 22);
+            this.txt_id_tel.TabIndex = 107;
+            this.txt_id_tel.Text = "0";
+            this.txt_id_tel.Visible = false;
             // 
             // Frm_telefonos
             // 

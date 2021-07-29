@@ -18,12 +18,13 @@ namespace Negocios
         private string nombre_marca;
         private char moneda;
         private string moneda_desc;
-        private int precio_valor;
+        private float precio_valor;
         private string precio_fecha;
+        private string tipo_prov;
         private bool baja;
         private string mensaje;
 
-        public Precio (int id_precio, int id_prod, int id_prov, string nombre_prov, int id_marca, string nombre_marca, string moneda_desc, int precio_valor, string precio_fecha, bool baja = true)
+        public Precio (int id_precio, int id_prod, int id_prov, string nombre_prov, int id_marca, string nombre_marca, string moneda_desc, float precio_valor, string precio_fecha, string tipo_prov, bool baja = true)
         {
             this.id_precio = id_precio;
             this.id_prod = id_prod;
@@ -35,6 +36,7 @@ namespace Negocios
             this.moneda_desc = moneda_desc;
             this.precio_valor = precio_valor;
             this.precio_fecha = precio_fecha;
+            this.tipo_prov = tipo_prov;
             this.baja = baja;
         }
         public string Mensaje { get => mensaje; set => mensaje = value; }
@@ -49,7 +51,7 @@ namespace Negocios
 
             if (Precio_m.ValidarDatos())
             {
-                resultado = Precio_m.Guardar(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, true);
+                resultado = Precio_m.Guardar(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, tipo_prov, true);
             }
 
             else
@@ -72,7 +74,7 @@ namespace Negocios
         public bool Eliminar()
         {
             int resultado = 0;
-            resultado = Precio_m.Guardar(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, false);
+            resultado = Precio_m.Guardar(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, tipo_prov, false);
 
             if (resultado > 0)
             {

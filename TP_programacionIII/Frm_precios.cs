@@ -39,32 +39,43 @@ namespace TP_programacionIII
             string nombre_marca = txt_nombre_marca.Text.Trim();
             string moneda = txt_nombre_moneda.Text.Trim();
             string fecha = txt_fecha.Text.Trim();
-            int precio_valor= Int32.Parse(txt_precio.Text.Trim());
+            float precio_valor= Convert.ToSingle(txt_precio.Text.Trim(), System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+            string tipo_prov = txt_tipo_prov.Text.Trim();
             //float precio_valor = Convert.ToSingle(txt_precio.Text.Trim(), System.Globalization.CultureInfo.CreateSpecificCulture("en-US")); // de esta manera, los decimales usan .
-
-            Precio precio = new Precio(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda, precio_valor, fecha);
-            bool estado = precio.Guardar();
-
-            if (estado)
+            
+            if (id_prov==0 || id_marca==0 || moneda=="" || fecha=="" || txt_precio.Text.Trim() == "")
             {
-                Funciones.MOK(this, precio.Mensaje);
+                Funciones.MError(this, "Cargue todos los datos antes de guardar");
 
-                txt_id_precio.Text = "0";
-                txt_id_prov.Text = "0";
-                txt_nombre_prov.Text = "";
-                txt_id_marca.Text = "0";
-                txt_nombre_marca.Text = "";
-                txt_fecha.Text = "";
-                txt_nombre_moneda.Text = "";
-                txt_precio.Text = "";
-
-                dgv_precios.DataSource = Precio.TraerActivos(id_prod); // le asigno los datos traidos en la tabla
-
-            }
-            else
+            } else
             {
-                Funciones.MError(this, precio.Mensaje);
+                Precio precio = new Precio(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda, precio_valor, fecha, tipo_prov);
+                bool estado = precio.Guardar();
+
+                if (estado)
+                {
+                    Funciones.MOK(this, precio.Mensaje);
+
+                    txt_id_precio.Text = "0";
+                    txt_id_prov.Text = "0";
+                    txt_nombre_prov.Text = "";
+                    txt_id_marca.Text = "0";
+                    txt_nombre_marca.Text = "";
+                    txt_fecha.Text = "";
+                    txt_nombre_moneda.Text = "";
+                    txt_precio.Text = "";
+                    txt_tipo_prov.Text = "";
+
+                    dgv_precios.DataSource = Precio.TraerActivos(id_prod); // le asigno los datos traidos en la tabla
+
+                }
+                else
+                {
+                    Funciones.MError(this, precio.Mensaje);
+                }
             }
+
+            
         }
 
         private void bto_limpiar_Click(object sender, EventArgs e)
@@ -77,6 +88,8 @@ namespace TP_programacionIII
             txt_fecha.Text = "";
             txt_nombre_moneda.Text = "";
             txt_precio.Text = "";
+            txt_tipo_prov.Text = "";
+            txt_margen.Text = "";
         }
 
         private void bto_eliminar_Click(object sender, EventArgs e)
@@ -93,10 +106,11 @@ namespace TP_programacionIII
                     string nombre_marca = txt_nombre_marca.Text.Trim();
                     string moneda = txt_nombre_moneda.Text.Trim();
                     string fecha = txt_fecha.Text.Trim();
-                    int precio_valor = Int32.Parse(txt_precio.Text.Trim());
+                    float precio_valor = Convert.ToSingle(txt_precio.Text.Trim(), System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+                    string tipo_prov = txt_tipo_prov.Text.Trim();
                     //float precio_valor = Convert.ToSingle(txt_precio.Text.Trim(), System.Globalization.CultureInfo.CreateSpecificCulture("en-US")); // de esta manera, los decimales usan .
 
-                    Precio precio = new Precio(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda, precio_valor, fecha);
+                    Precio precio = new Precio(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda, precio_valor, fecha, tipo_prov);
                     bool estado = precio.Eliminar();
                     if (estado)
                     {
@@ -109,6 +123,7 @@ namespace TP_programacionIII
                         txt_fecha.Text = "";
                         txt_nombre_moneda.Text = "";
                         txt_precio.Text = "";
+                        txt_tipo_prov.Text = "";
                         dgv_precios.DataSource = Precio.TraerActivos(id_prod);  // le asigno los datos traidos en la tabla
 
                     }
@@ -134,6 +149,7 @@ namespace TP_programacionIII
         {
             txt_id_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["id_prov"].Value); // selecciona la celda de la fila current (seleccionada), uso el nombre de la columna del data grid view, lo obtiene en string, por eso lo convierte.
             txt_nombre_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["nombre"].Value);
+            txt_tipo_prov.Text = Convert.ToString(this.dgv_proveedores.CurrentRow.Cells["tipo_prov"].Value);
         }
 
         private void selectMarca(object sender, DataGridViewCellMouseEventArgs e)
@@ -151,7 +167,21 @@ namespace TP_programacionIII
             txt_nombre_marca.Text = Convert.ToString(this.dgv_precios.CurrentRow.Cells["nombre_marca"].Value);
             txt_fecha.Text = Convert.ToString(this.dgv_precios.CurrentRow.Cells["Fecha"].Value);
             txt_nombre_moneda.Text = Convert.ToString(this.dgv_precios.CurrentRow.Cells["Moneda"].Value);
-            txt_precio.Text = Convert.ToString(this.dgv_precios.CurrentRow.Cells["precio_dvg"].Value); ;
+            txt_precio.Text = Convert.ToString(this.dgv_precios.CurrentRow.Cells["precio_dvg"].Value) ;
+            txt_tipo_prov.Text = Convert.ToString(this.dgv_precios.CurrentRow.Cells["tipoProveedor"].Value);
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            if (txt_tipo_prov.Text == "Minorista ")
+            {
+                txt_margen.Text = Convert.ToString(Convert.ToSingle(txt_precio.Text.Trim()) * 0.05);
+            }
+            else
+            {
+                txt_margen.Text = "0";
+            }
+
         }
     }
 }

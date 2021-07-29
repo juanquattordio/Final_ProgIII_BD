@@ -40,6 +40,15 @@ namespace TP_programacionIII
             this.chBox_Activos = new System.Windows.Forms.CheckBox();
             this.bto_eliminar = new System.Windows.Forms.Button();
             this.dgv_direcciones = new System.Windows.Forms.DataGridView();
+            this.id_dir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo_postal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bto_Salir = new System.Windows.Forms.Button();
             this.bto_limpiar = new System.Windows.Forms.Button();
             this.bto_aceptar = new System.Windows.Forms.Button();
@@ -51,15 +60,6 @@ namespace TP_programacionIII
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.id_dir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo_postal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_direcciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +71,7 @@ namespace TP_programacionIII
             this.txt_id_dir.Size = new System.Drawing.Size(42, 22);
             this.txt_id_dir.TabIndex = 121;
             this.txt_id_dir.Text = "0";
+            this.txt_id_dir.Visible = false;
             // 
             // label3
             // 
@@ -95,14 +96,14 @@ namespace TP_programacionIII
             this.txt_ciudad.Location = new System.Drawing.Point(171, 75);
             this.txt_ciudad.Name = "txt_ciudad";
             this.txt_ciudad.Size = new System.Drawing.Size(160, 22);
-            this.txt_ciudad.TabIndex = 114;
+            this.txt_ciudad.TabIndex = 1;
             // 
             // txt_codigo_postal
             // 
             this.txt_codigo_postal.Location = new System.Drawing.Point(452, 131);
             this.txt_codigo_postal.Name = "txt_codigo_postal";
             this.txt_codigo_postal.Size = new System.Drawing.Size(119, 22);
-            this.txt_codigo_postal.TabIndex = 115;
+            this.txt_codigo_postal.TabIndex = 6;
             // 
             // txt_nombre_prov
             // 
@@ -122,6 +123,7 @@ namespace TP_programacionIII
             this.txt_id_prov.Size = new System.Drawing.Size(32, 22);
             this.txt_id_prov.TabIndex = 118;
             this.txt_id_prov.Text = "0";
+            this.txt_id_prov.Visible = false;
             // 
             // label2
             // 
@@ -149,7 +151,7 @@ namespace TP_programacionIII
             this.bto_eliminar.Location = new System.Drawing.Point(265, 364);
             this.bto_eliminar.Name = "bto_eliminar";
             this.bto_eliminar.Size = new System.Drawing.Size(105, 44);
-            this.bto_eliminar.TabIndex = 112;
+            this.bto_eliminar.TabIndex = 9;
             this.bto_eliminar.Text = "Eliminar";
             this.bto_eliminar.UseVisualStyleBackColor = true;
             this.bto_eliminar.Click += new System.EventHandler(this.bto_eliminar_Click);
@@ -179,100 +181,6 @@ namespace TP_programacionIII
             this.dgv_direcciones.TabIndex = 111;
             this.dgv_direcciones.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.modificar);
             // 
-            // bto_Salir
-            // 
-            this.bto_Salir.Location = new System.Drawing.Point(411, 364);
-            this.bto_Salir.Name = "bto_Salir";
-            this.bto_Salir.Size = new System.Drawing.Size(105, 44);
-            this.bto_Salir.TabIndex = 113;
-            this.bto_Salir.Text = "Salir";
-            this.bto_Salir.UseVisualStyleBackColor = true;
-            this.bto_Salir.Click += new System.EventHandler(this.bto_Salir_Click);
-            // 
-            // bto_limpiar
-            // 
-            this.bto_limpiar.Location = new System.Drawing.Point(625, 120);
-            this.bto_limpiar.Name = "bto_limpiar";
-            this.bto_limpiar.Size = new System.Drawing.Size(105, 44);
-            this.bto_limpiar.TabIndex = 109;
-            this.bto_limpiar.Text = "Limpiar";
-            this.bto_limpiar.UseVisualStyleBackColor = true;
-            this.bto_limpiar.Click += new System.EventHandler(this.bto_limpiar_Click);
-            // 
-            // bto_aceptar
-            // 
-            this.bto_aceptar.Location = new System.Drawing.Point(625, 70);
-            this.bto_aceptar.Name = "bto_aceptar";
-            this.bto_aceptar.Size = new System.Drawing.Size(105, 44);
-            this.bto_aceptar.TabIndex = 108;
-            this.bto_aceptar.Text = "Guardar";
-            this.bto_aceptar.UseVisualStyleBackColor = true;
-            this.bto_aceptar.Click += new System.EventHandler(this.bto_aceptar_Click);
-            // 
-            // txt_provincia
-            // 
-            this.txt_provincia.Location = new System.Drawing.Point(185, 103);
-            this.txt_provincia.Name = "txt_provincia";
-            this.txt_provincia.Size = new System.Drawing.Size(146, 22);
-            this.txt_provincia.TabIndex = 114;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(113, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 17);
-            this.label4.TabIndex = 120;
-            this.label4.Text = "Provincia";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(113, 137);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 17);
-            this.label5.TabIndex = 123;
-            this.label5.Text = "País";
-            // 
-            // txt_pais
-            // 
-            this.txt_pais.Location = new System.Drawing.Point(185, 134);
-            this.txt_pais.Name = "txt_pais";
-            this.txt_pais.Size = new System.Drawing.Size(146, 22);
-            this.txt_pais.TabIndex = 122;
-            // 
-            // txt_calle
-            // 
-            this.txt_calle.Location = new System.Drawing.Point(411, 75);
-            this.txt_calle.Name = "txt_calle";
-            this.txt_calle.Size = new System.Drawing.Size(160, 22);
-            this.txt_calle.TabIndex = 114;
-            // 
-            // txt_numero
-            // 
-            this.txt_numero.Location = new System.Drawing.Point(425, 103);
-            this.txt_numero.Name = "txt_numero";
-            this.txt_numero.Size = new System.Drawing.Size(146, 22);
-            this.txt_numero.TabIndex = 114;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(353, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 17);
-            this.label6.TabIndex = 120;
-            this.label6.Text = "Calle";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(353, 106);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 17);
-            this.label7.TabIndex = 120;
-            this.label7.Text = "Numero";
-            // 
             // id_dir
             // 
             this.id_dir.DataPropertyName = "id_dir";
@@ -280,6 +188,7 @@ namespace TP_programacionIII
             this.id_dir.MinimumWidth = 6;
             this.id_dir.Name = "id_dir";
             this.id_dir.ReadOnly = true;
+            this.id_dir.Visible = false;
             this.id_dir.Width = 20;
             // 
             // ciudad
@@ -289,6 +198,7 @@ namespace TP_programacionIII
             this.ciudad.MinimumWidth = 6;
             this.ciudad.Name = "ciudad";
             this.ciudad.ReadOnly = true;
+            this.ciudad.Width = 125;
             // 
             // provincia
             // 
@@ -297,6 +207,7 @@ namespace TP_programacionIII
             this.provincia.MinimumWidth = 6;
             this.provincia.Name = "provincia";
             this.provincia.ReadOnly = true;
+            this.provincia.Width = 125;
             // 
             // pais
             // 
@@ -305,6 +216,7 @@ namespace TP_programacionIII
             this.pais.MinimumWidth = 6;
             this.pais.Name = "pais";
             this.pais.ReadOnly = true;
+            this.pais.Width = 125;
             // 
             // calle
             // 
@@ -313,6 +225,7 @@ namespace TP_programacionIII
             this.calle.MinimumWidth = 6;
             this.calle.Name = "calle";
             this.calle.ReadOnly = true;
+            this.calle.Width = 125;
             // 
             // numero
             // 
@@ -350,6 +263,100 @@ namespace TP_programacionIII
             this.Activo.Name = "Activo";
             this.Activo.ReadOnly = true;
             this.Activo.Width = 30;
+            // 
+            // bto_Salir
+            // 
+            this.bto_Salir.Location = new System.Drawing.Point(411, 364);
+            this.bto_Salir.Name = "bto_Salir";
+            this.bto_Salir.Size = new System.Drawing.Size(105, 44);
+            this.bto_Salir.TabIndex = 10;
+            this.bto_Salir.Text = "Salir";
+            this.bto_Salir.UseVisualStyleBackColor = true;
+            this.bto_Salir.Click += new System.EventHandler(this.bto_Salir_Click);
+            // 
+            // bto_limpiar
+            // 
+            this.bto_limpiar.Location = new System.Drawing.Point(625, 120);
+            this.bto_limpiar.Name = "bto_limpiar";
+            this.bto_limpiar.Size = new System.Drawing.Size(105, 44);
+            this.bto_limpiar.TabIndex = 8;
+            this.bto_limpiar.Text = "Limpiar";
+            this.bto_limpiar.UseVisualStyleBackColor = true;
+            this.bto_limpiar.Click += new System.EventHandler(this.bto_limpiar_Click);
+            // 
+            // bto_aceptar
+            // 
+            this.bto_aceptar.Location = new System.Drawing.Point(625, 70);
+            this.bto_aceptar.Name = "bto_aceptar";
+            this.bto_aceptar.Size = new System.Drawing.Size(105, 44);
+            this.bto_aceptar.TabIndex = 7;
+            this.bto_aceptar.Text = "Guardar";
+            this.bto_aceptar.UseVisualStyleBackColor = true;
+            this.bto_aceptar.Click += new System.EventHandler(this.bto_aceptar_Click);
+            // 
+            // txt_provincia
+            // 
+            this.txt_provincia.Location = new System.Drawing.Point(185, 103);
+            this.txt_provincia.Name = "txt_provincia";
+            this.txt_provincia.Size = new System.Drawing.Size(146, 22);
+            this.txt_provincia.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(113, 106);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 17);
+            this.label4.TabIndex = 120;
+            this.label4.Text = "Provincia";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(113, 137);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 17);
+            this.label5.TabIndex = 123;
+            this.label5.Text = "País";
+            // 
+            // txt_pais
+            // 
+            this.txt_pais.Location = new System.Drawing.Point(185, 134);
+            this.txt_pais.Name = "txt_pais";
+            this.txt_pais.Size = new System.Drawing.Size(146, 22);
+            this.txt_pais.TabIndex = 3;
+            // 
+            // txt_calle
+            // 
+            this.txt_calle.Location = new System.Drawing.Point(411, 75);
+            this.txt_calle.Name = "txt_calle";
+            this.txt_calle.Size = new System.Drawing.Size(160, 22);
+            this.txt_calle.TabIndex = 4;
+            // 
+            // txt_numero
+            // 
+            this.txt_numero.Location = new System.Drawing.Point(425, 103);
+            this.txt_numero.Name = "txt_numero";
+            this.txt_numero.Size = new System.Drawing.Size(146, 22);
+            this.txt_numero.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 17);
+            this.label6.TabIndex = 120;
+            this.label6.Text = "Calle";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(353, 106);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 17);
+            this.label7.TabIndex = 120;
+            this.label7.Text = "Numero";
             // 
             // Frm_direcciones
             // 

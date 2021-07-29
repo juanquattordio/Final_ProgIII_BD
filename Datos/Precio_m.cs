@@ -29,7 +29,7 @@ namespace Datos
         public static DataTable TraerActivos (int id_producto)
         {
             DataTable dtListaAll = new DataTable("Precios"); // creo una Tabla de datos
-            string sql = "SELECT id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, baja FROM precios where baja='1' and @id_prod=id_prod"; // le digo que datos buscar y los guardo ahí
+            string sql = "SELECT id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, tipo_prov, baja FROM precios where baja='1' and @id_prod=id_prod"; // le digo que datos buscar y los guardo ahí
             try
             {
                 Conexion Cx = new Conexion();
@@ -82,11 +82,11 @@ namespace Datos
             //    return retorno;
             //}
         }
-        public static int Guardar (int id_precio, int id_prod, int id_prov, string nombre_prov, int id_marca, string nombre_marca, string moneda_desc, int precio_valor, string precio_fecha, bool baja = true)
+        public static int Guardar (int id_precio, int id_prod, int id_prov, string nombre_prov, int id_marca, string nombre_marca, string moneda_desc, float precio_valor, string precio_fecha, string tipo_prov, bool baja = true)
         {
             if (id_precio == 0)
             {
-                string sql = "INSERT INTO precios (id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, baja) VALUES (@id_prod, @id_prov, @nombre_prov, @id_marca, @nombre_marca, @moneda_desc, @precio, @fecha, @baja)";
+                string sql = "INSERT INTO precios (id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, tipo_prov, baja) VALUES (@id_prod, @id_prov, @nombre_prov, @id_marca, @nombre_marca, @moneda_desc, @precio, @fecha, @tipo_prov, @baja)";
                 try
                 {
                     Conexion Cx = new Conexion();
@@ -99,8 +99,9 @@ namespace Datos
                     Cx.sqlCmd.Parameters.Add("@id_marca", DbType.Int32);
                     Cx.sqlCmd.Parameters.Add("@nombre_marca", DbType.String);
                     Cx.sqlCmd.Parameters.Add("@moneda_desc", DbType.String);
-                    Cx.sqlCmd.Parameters.Add("@precio", DbType.Int32);
+                    Cx.sqlCmd.Parameters.Add("@precio", DbType.Single);
                     Cx.sqlCmd.Parameters.Add("@fecha", DbType.String);
+                    Cx.sqlCmd.Parameters.Add("@tipo_prov", DbType.String);
                     Cx.sqlCmd.Parameters.Add("@baja", DbType.Boolean);
                     Cx.sqlCmd.Parameters[0].Value = id_prod;
                     Cx.sqlCmd.Parameters[1].Value = id_prov;
@@ -110,7 +111,8 @@ namespace Datos
                     Cx.sqlCmd.Parameters[5].Value = moneda_desc;
                     Cx.sqlCmd.Parameters[6].Value = precio_valor;
                     Cx.sqlCmd.Parameters[7].Value = precio_fecha;
-                    Cx.sqlCmd.Parameters[8].Value = baja;
+                    Cx.sqlCmd.Parameters[8].Value = tipo_prov;
+                    Cx.sqlCmd.Parameters[9].Value = baja;
 
                     Cx.Abrir();
                     int nro = Cx.sqlCmd.ExecuteNonQuery();
@@ -128,14 +130,14 @@ namespace Datos
             else
             {
 
-                return Modificar(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, baja);
+                return Modificar(id_precio, id_prod, id_prov, nombre_prov, id_marca, nombre_marca, moneda_desc, precio_valor, precio_fecha, tipo_prov, baja);
 
 
             }
         }
-        private static int Modificar(int id_precio, int id_prod, int id_prov, string nombre_prov, int id_marca, string nombre_marca, string moneda_desc, int precio_valor, string precio_fecha, bool baja = true)
+        private static int Modificar(int id_precio, int id_prod, int id_prov, string nombre_prov, int id_marca, string nombre_marca, string moneda_desc, float precio_valor, string precio_fecha, string tipo_prov, bool baja = true)
         {
-            string sql = "Update precios SET id_prov = @id_prov, nombre_prov = @nombre_prov, id_marca = @id_marca, nombre_marca = @nombre_marca, moneda_desc = @moneda_desc, precio_valor = @precio, precio_fecha = @fecha, baja = @baja Where id_precio = @id_precio";
+            string sql = "Update precios SET id_prov = @id_prov, nombre_prov = @nombre_prov, id_marca = @id_marca, nombre_marca = @nombre_marca, moneda_desc = @moneda_desc, precio_valor = @precio, precio_fecha = @fecha, tipo_prov = @tipo_prov, baja = @baja Where id_precio = @id_precio";
             try
             {
 
@@ -149,8 +151,9 @@ namespace Datos
                 Cx.sqlCmd.Parameters.Add("@id_marca", DbType.Int32);
                 Cx.sqlCmd.Parameters.Add("@nombre_marca", DbType.String);
                 Cx.sqlCmd.Parameters.Add("@moneda_desc", DbType.String);
-                Cx.sqlCmd.Parameters.Add("@precio", DbType.Int32);
+                Cx.sqlCmd.Parameters.Add("@precio", DbType.Single);
                 Cx.sqlCmd.Parameters.Add("@fecha", DbType.String);
+                Cx.sqlCmd.Parameters.Add("@tipo_prov", DbType.String);
                 Cx.sqlCmd.Parameters.Add("@baja", DbType.Boolean);
                 Cx.sqlCmd.Parameters.Add("@id_precio", DbType.Int32);
                 Cx.sqlCmd.Parameters[0].Value = id_prod;
@@ -161,8 +164,9 @@ namespace Datos
                 Cx.sqlCmd.Parameters[5].Value = moneda_desc;
                 Cx.sqlCmd.Parameters[6].Value = precio_valor;
                 Cx.sqlCmd.Parameters[7].Value = precio_fecha;
-                Cx.sqlCmd.Parameters[8].Value = baja;
-                Cx.sqlCmd.Parameters[9].Value = id_precio;
+                Cx.sqlCmd.Parameters[8].Value = tipo_prov;
+                Cx.sqlCmd.Parameters[9].Value = baja;
+                Cx.sqlCmd.Parameters[10].Value = id_precio;
 
                 Cx.Abrir();
                 int nro = Cx.sqlCmd.ExecuteNonQuery();

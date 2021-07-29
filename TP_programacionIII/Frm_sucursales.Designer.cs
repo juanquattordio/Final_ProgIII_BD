@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_id_suc = new System.Windows.Forms.TextBox();
@@ -126,8 +126,8 @@
             // nombre
             // 
             this.nombre.DataPropertyName = "nombre";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.nombre.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.nombre.DefaultCellStyle = dataGridViewCellStyle1;
             this.nombre.HeaderText = "Nombre Sucursal";
             this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
@@ -149,7 +149,7 @@
             this.bto_limpiar.Location = new System.Drawing.Point(463, 81);
             this.bto_limpiar.Name = "bto_limpiar";
             this.bto_limpiar.Size = new System.Drawing.Size(105, 44);
-            this.bto_limpiar.TabIndex = 4;
+            this.bto_limpiar.TabIndex = 5;
             this.bto_limpiar.Text = "Limpiar";
             this.bto_limpiar.UseVisualStyleBackColor = true;
             this.bto_limpiar.Click += new System.EventHandler(this.bto_limpiar_Click);
